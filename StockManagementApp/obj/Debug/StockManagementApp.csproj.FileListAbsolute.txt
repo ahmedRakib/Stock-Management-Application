@@ -7,6 +7,5 @@ D:\Stock Management System Application\StockManagementSystemApplication\StockMan
 D:\Stock Management App\StockManagementApp\bin\StockManagementApp.dll.config
 D:\Stock Management App\StockManagementApp\bin\StockManagementApp.dll
 D:\Stock Management App\StockManagementApp\bin\StockManagementApp.pdb
-D:\Stock Management App\StockManagementApp\obj\Debug\StockManagementApp.csprojResolveAssemblyReference.cache
 D:\Stock Management App\StockManagementApp\obj\Debug\StockManagementApp.dll
 D:\Stock Management App\StockManagementApp\obj\Debug\StockManagementApp.pdb

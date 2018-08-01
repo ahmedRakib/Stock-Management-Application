@@ -14,6 +14,8 @@ namespace StockManagementApp.UI
         CompanyManager companyManager = new CompanyManager();
         ItemManager itemManager = new ItemManager();
 
+        CompanyManager companyManager = new CompanyManager();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,6 +38,7 @@ namespace StockManagementApp.UI
         protected void saveButton_Click(object sender, EventArgs e)
         {
             
+
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using StockManagementApp.BLL;
+using StockManagementApp.DAL.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,13 +31,21 @@ namespace StockManagementApp.UI
                 companyDropDownList.DataTextField = "Name";
                 companyDropDownList.DataValueField = "Id";
                 companyDropDownList.DataBind();
+
+                recorderLevelTextBox.Text = "0";
             }
         }
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
             
+            var item = new Item();
+            item.Name = itemNameTextBox.Text;
+            item.RecorderLevel = Convert.ToInt32(recorderLevelTextBox.Text);
+            item.CategoryId = Convert.ToInt32(categoryDropDownList.SelectedValue);
+            item.CompanyId = Convert.ToInt32(companyDropDownList.SelectedValue);
 
+            messageLabel.Text = itemManager.Save(item);
         }
     }
 }

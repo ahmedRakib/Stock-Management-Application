@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockManagementApp.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +10,30 @@ namespace StockManagementApp.UI
 {
     public partial class ItemSetupUI : System.Web.UI.Page
     {
+        CategoryManager categoryManager = new CategoryManager();
+
+        CompanyManager companyManager = new CompanyManager();
+
         protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                var categories = categoryManager.GetAll();
+                var companies = companyManager.GetAll();
+
+                categoryDropDownList.DataSource = categories;
+                categoryDropDownList.DataTextField = "Name";
+                categoryDropDownList.DataValueField = "Id";
+                categoryDropDownList.DataBind();
+
+                companyDropDownList.DataSource = companies;
+                companyDropDownList.DataTextField = "Name";
+                companyDropDownList.DataValueField = "Id";
+                companyDropDownList.DataBind();
+            }
+        }
+
+        protected void saveButton_Click(object sender, EventArgs e)
         {
 
         }

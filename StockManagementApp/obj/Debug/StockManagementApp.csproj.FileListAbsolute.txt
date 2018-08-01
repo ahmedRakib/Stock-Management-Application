@@ -9,3 +9,4 @@ D:\Stock Management App\StockManagementApp\bin\StockManagementApp.dll
 D:\Stock Management App\StockManagementApp\bin\StockManagementApp.pdb
 D:\Stock Management App\StockManagementApp\obj\Debug\StockManagementApp.dll
 D:\Stock Management App\StockManagementApp\obj\Debug\StockManagementApp.pdb
+D:\Stock Management App\StockManagementApp\obj\Debug\StockManagementApp.csprojResolveAssemblyReference.cache

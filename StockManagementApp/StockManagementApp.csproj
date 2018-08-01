@@ -74,6 +74,7 @@
     <Compile Include="BLL\CompanyManager.cs" />
     <Compile Include="DAL\Entity\Category.cs" />
     <Compile Include="DAL\Entity\Company.cs" />
+    <Compile Include="DAL\Entity\Item.cs" />
     <Compile Include="DAL\Gateway\BaseGateway.cs" />
     <Compile Include="DAL\Gateway\CategoryGateway.cs" />
     <Compile Include="DAL\Gateway\CompanyGateway.cs" />

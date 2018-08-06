@@ -24,7 +24,7 @@
                     <asp:Label ID="Label2" runat="server" Text="Item"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="itemDropDownList" runat="server"></asp:DropDownList>
+                    <asp:DropDownList  AutoPostBack="true" ID="itemDropDownList" runat="server"  CssClass="text" OnSelectedIndexChanged="getItemDropDown_Change"></asp:DropDownList>
                 </td>
             </tr>
 
@@ -59,7 +59,7 @@
                 <td>
                 </td>
                 <td>
-                    <asp:Button ID="saveButton" runat="server" Text="Save" />
+                    <asp:Button ID="saveButton" runat="server" Text="Save" OnClick="saveButton_Click" />
                 </td>
             </tr>
         </table>

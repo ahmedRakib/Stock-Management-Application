@@ -68,6 +68,7 @@
     <Content Include="UI\CategoryUI.aspx" />
     <Content Include="UI\CompanyUI.aspx" />
     <Content Include="UI\ItemSetupUI.aspx" />
+    <Content Include="UI\StockInUI.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +106,13 @@
     </Compile>
     <Compile Include="UI\ItemSetupUI.aspx.designer.cs">
       <DependentUpon>ItemSetupUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\StockInUI.aspx.cs">
+      <DependentUpon>StockInUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\StockInUI.aspx.designer.cs">
+      <DependentUpon>StockInUI.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

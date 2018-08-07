@@ -35,5 +35,15 @@ namespace StockManagementApp.BLL
 
             return message;
         }
+
+        public List<Item> GetAll()
+        {
+            return itemGateway.GetAll();
+        }
+
+        public Item Get(string itemName)
+        {
+           return itemGateway.Get(itemName);
+        }
     }
 }

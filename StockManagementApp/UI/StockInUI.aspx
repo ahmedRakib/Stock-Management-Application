@@ -33,7 +33,7 @@
                     <asp:Label ID="Label3" runat="server" Text="Recorder Level"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="recorderLevelTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="recorderLevelTextBox" runat="server" ReadOnly="true"></asp:TextBox>
                 </td>
             </tr>
 
@@ -42,7 +42,7 @@
                     <asp:Label ID="Label4" runat="server" Text="Available Quantity"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="quantityTextBox" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="quantityTextBox" runat="server" ReadOnly="true"></asp:TextBox>
                 </td>
             </tr>
 
@@ -65,6 +65,7 @@
         </table>
     
     </div>
+        <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>
     </form>
 </body>
 </html>

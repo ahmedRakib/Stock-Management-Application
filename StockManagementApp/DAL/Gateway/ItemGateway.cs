@@ -68,5 +68,32 @@ namespace StockManagementApp.DAL.Gateway
 
             return items;
         }
+
+        public Item Get(string itemName)
+        {
+            var item = new Item();
+
+            Query = @"Select * from Item Where Name = '" + itemName + "'";
+
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            while (Reader.Read())
+            {
+                item.Id = Convert.ToInt32(Reader["Id"]);
+                item.Name = Reader["Name"].ToString();
+                item.CompanyId = Convert.ToInt32(Reader["CompanyId"]);
+                item.CategoryId = Convert.ToInt32(Reader["CategoryId"]);
+                item.RecorderLevel = Convert.ToInt32(Reader["RecorderLevel"]);
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return item;
+        }
     }
 }

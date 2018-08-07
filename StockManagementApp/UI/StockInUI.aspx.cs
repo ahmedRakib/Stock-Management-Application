@@ -26,11 +26,15 @@ namespace StockManagementApp.UI
                 companyDropDownList.DataValueField = "Id";
                 companyDropDownList.DataTextField = "Name";
                 companyDropDownList.DataBind();
+                //companyDropDownList.Items.Insert(0, "Select");
 
                 itemDropDownList.DataSource = items;
                 itemDropDownList.DataValueField = "Id";
                 itemDropDownList.DataTextField = "Name";
                 itemDropDownList.DataBind();
+                itemDropDownList.Items.Insert(0, "Select");
+
+                
             }
 
             GetItem();
@@ -44,18 +48,27 @@ namespace StockManagementApp.UI
 
         private void GetItem()
         {
-            ItemStockInVM VM = new ItemStockInVM();
-
+           
+            messageLabel.Text = String.Empty;
             var itemName = itemDropDownList.SelectedItem.Text;
-            VM = stockInManager.Get(itemName);
-            quantityTextBox.Text = VM.Quantity.ToString();
-            recorderLevelTextBox.Text = VM.RecorderLevel.ToString();
+            var item  = itemManager.Get(itemName);
+            var companyId = Convert.ToInt32(companyDropDownList.SelectedValue);
+            var stocIn = stockInManager.Get(item.Name, companyId);
+            quantityTextBox.Text = stocIn.Quantity.ToString();
+            recorderLevelTextBox.Text = item.RecorderLevel.ToString();
         }
 
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
+            var stockIn = new StockIn();
+            stockIn.CompanyId = Convert.ToInt32(companyDropDownList.SelectedValue);
+            stockIn.ItemId = Convert.ToInt32(itemDropDownList.SelectedValue);
+            stockIn.Quantity = Convert.ToInt32(quantityTextBox.Text) +Convert.ToInt32(stockInTextBox.Text);
 
+            messageLabel.Text = stockInManager.Save(stockIn);
+
+            stockInTextBox.Text = String.Empty;
         }
     }
 }

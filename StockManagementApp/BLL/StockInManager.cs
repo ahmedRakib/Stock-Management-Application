@@ -1,4 +1,5 @@
-﻿using StockManagementApp.DAL.Gateway;
+﻿using StockManagementApp.DAL.Entity;
+using StockManagementApp.DAL.Gateway;
 using StockManagementApp.DAL.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,27 @@ namespace StockManagementApp.BLL
     {
         StockInGateway stockInGateway = new StockInGateway();
              
-        public ItemStockInVM Get(string itemName)
+        public StockIn Get(string itemName, int? companyId)
         {
-            return stockInGateway.Get(itemName);
+            return stockInGateway.Get(itemName, companyId);
+        }
+
+        public string Save(DAL.Entity.StockIn stockIn)
+        {
+            string message = ""; 
+
+            int rowAffected = stockInGateway.Save(stockIn);
+
+            if (rowAffected > 0)
+            {
+                message = "Saved Successfully";
+            }
+            else
+            {
+                message = "Could not be saved";
+            }
+
+            return message;
         }
     }
 }

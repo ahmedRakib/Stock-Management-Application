@@ -41,9 +41,9 @@ namespace StockManagementApp.BLL
             return itemGateway.GetAll();
         }
 
-        internal Item Get(string itemName)
+        public Item Get(string itemName)
         {
-            throw new NotImplementedException();
+           return itemGateway.Get(itemName);
         }
     }
 }

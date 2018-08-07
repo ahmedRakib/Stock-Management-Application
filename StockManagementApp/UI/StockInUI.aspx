@@ -15,7 +15,7 @@
                     <asp:Label ID="Label1" runat="server" Text="Company"></asp:Label>
                 </td>
                 <td>
-                    <asp:DropDownList ID="companyDropDownList" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="companyDropDownList" AutoPostBack="true" runat="server" OnSelectedIndexChanged="companyDropDown_Change"></asp:DropDownList>
                 </td>
             </tr>
 

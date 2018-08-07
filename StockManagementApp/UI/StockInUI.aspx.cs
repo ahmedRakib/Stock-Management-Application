@@ -33,8 +33,6 @@ namespace StockManagementApp.UI
                 itemDropDownList.DataTextField = "Name";
                 itemDropDownList.DataBind();
                 itemDropDownList.Items.Insert(0, "Select");
-
-                
             }
 
             GetItem();
@@ -42,6 +40,11 @@ namespace StockManagementApp.UI
 
 
         protected void getItemDropDown_Change(object sender, EventArgs e)
+        {
+            GetItem();
+        }
+
+        protected void companyDropDown_Change(object sender, EventArgs e)
         {
             GetItem();
         }

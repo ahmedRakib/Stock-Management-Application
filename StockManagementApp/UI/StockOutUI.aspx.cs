@@ -128,7 +128,66 @@ namespace StockManagementApp.UI
                      message = stockInManager.UpdateItemQuantity(itemInStock);
                      message = stockOutManager.Save(stockOut);
                 }
+            }
 
+            messageLabel.Text = message;
+        }
+
+        protected void damageButton_Click(object sender, EventArgs e)
+        {
+            var message = "";
+            List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
+            foreach (var i in items)
+            {
+                var stockOut = new StockOut();
+                stockOut.Quantity = i.StockOutQuantity;
+                stockOut.CompanyId = i.CompanyId;
+                stockOut.ItemId = i.ItemId;
+                stockOut.StockOutType = (int)StockOutType.Damage;
+
+
+                var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
+                itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
+                if (itemInStock.Quantity < 0)
+                {
+                    message = "Sorry!!! There is not enough number of item to sale.";
+                }
+
+                else
+                {
+                    message = stockInManager.UpdateItemQuantity(itemInStock);
+                    message = stockOutManager.Save(stockOut);
+                }
+            }
+
+            messageLabel.Text = message;
+        }
+
+        protected void lostButton_Click(object sender, EventArgs e)
+        {
+            var message = "";
+            List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
+            foreach (var i in items)
+            {
+                var stockOut = new StockOut();
+                stockOut.Quantity = i.StockOutQuantity;
+                stockOut.CompanyId = i.CompanyId;
+                stockOut.ItemId = i.ItemId;
+                stockOut.StockOutType = (int)StockOutType.Lost;
+
+
+                var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
+                itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
+                if (itemInStock.Quantity < 0)
+                {
+                    message = "Sorry!!! There is not enough number of item to sale.";
+                }
+
+                else
+                {
+                    message = stockInManager.UpdateItemQuantity(itemInStock);
+                    message = stockOutManager.Save(stockOut);
+                }
             }
 
             messageLabel.Text = message;

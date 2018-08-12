@@ -71,8 +71,8 @@
         <table>
             <tr>
                 <td><asp:Button ID="sellButton" runat="server" Text="Sell" OnClick="sellButton_Click" /></td>
-                <td><asp:Button ID="damageButton" runat="server" Text="Damage" /></td>
-                 <td><asp:Button ID="lostButton" runat="server" Text="Lost" /></td>
+                <td><asp:Button ID="damageButton" runat="server" Text="Damage" OnClick="damageButton_Click" /></td>
+                 <td><asp:Button ID="lostButton" runat="server" Text="Lost" OnClick="lostButton_Click" /></td>
             </tr>
         </table>
         <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>

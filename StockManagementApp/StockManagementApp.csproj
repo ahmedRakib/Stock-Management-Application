@@ -127,7 +127,6 @@
     <Compile Include="UI\StockOutUI.aspx.designer.cs">
       <DependentUpon>StockOutUI.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\StockOutVm.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

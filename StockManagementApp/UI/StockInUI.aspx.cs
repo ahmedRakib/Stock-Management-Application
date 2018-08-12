@@ -67,7 +67,7 @@ namespace StockManagementApp.UI
             var stockIn = new StockIn();
             stockIn.CompanyId = Convert.ToInt32(companyDropDownList.SelectedValue);
             stockIn.ItemId = Convert.ToInt32(itemDropDownList.SelectedValue);
-            stockIn.Quantity = Convert.ToInt32(quantityTextBox.Text) +Convert.ToInt32(stockInTextBox.Text);
+            stockIn.Quantity = Convert.ToInt32(quantityTextBox.Text) + Convert.ToInt32(stockInTextBox.Text);
 
             messageLabel.Text = stockInManager.Save(stockIn);
 

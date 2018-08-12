@@ -53,5 +53,21 @@ namespace StockManagementApp.DAL.Gateway
 
             return rowAffected;
         }
+
+        public int UpdateItemQuantity(StockIn itemInStock)
+        {
+            //Query = "UPDATE  StockIn (CompanyId, ItemId, Quantity) VALUES ('" + stockIn.CompanyId + "', '" + stockIn.ItemId + "', '" + stockIn.Quantity + "')";
+
+            Query = @"UPDATE StockIn 
+                SET CompanyId = '" + itemInStock.CompanyId + "', ItemId = '" + itemInStock.ItemId + "', Quantity = '" + itemInStock.Quantity + "' WHERE ItemId = '"+itemInStock.ItemId+"'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            int rowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+
+            return rowAffected;
+        }
     }
 }

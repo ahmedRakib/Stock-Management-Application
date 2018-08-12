@@ -34,5 +34,19 @@ namespace StockManagementApp.BLL
 
             return message;
         }
+
+        public string UpdateItemQuantity(StockIn itemInStock)
+        {
+            int rowAffected= stockInGateway.UpdateItemQuantity(itemInStock);
+
+            if (rowAffected > 0)
+            {
+                return "Updated Successfully";
+            }
+            else
+            {
+                return "Updating Failed";
+            }
+        }
     }
 }

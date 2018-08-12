@@ -52,7 +52,7 @@
                     <asp:Label ID="Label5" runat="server" Text="Stock Out Quantity"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="stockOutTextBox" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="stockOutTextBox" runat="server"></asp:TextBox>
                 </td>
             </tr>
 
@@ -60,7 +60,7 @@
                 <td>
                 </td>
                 <td>
-                    <asp:Button ID="addButton" runat="server" Text="Add" />
+                    <asp:Button ID="addButton" runat="server" Text="Add" OnClick="addButton_Click" />
                 </td>
             </tr>
         </table>
@@ -68,6 +68,14 @@
     </div>
         <asp:GridView ID="stockOutGridView" runat="server">
         </asp:GridView>
+        <table>
+            <tr>
+                <td><asp:Button ID="sellButton" runat="server" Text="Sell" OnClick="sellButton_Click" /></td>
+                <td><asp:Button ID="damageButton" runat="server" Text="Damage" /></td>
+                 <td><asp:Button ID="lostButton" runat="server" Text="Lost" /></td>
+            </tr>
+        </table>
+        <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>
     </form>
 </body>
 </html>

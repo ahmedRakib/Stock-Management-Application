@@ -1,4 +1,7 @@
 ﻿using StockManagementApp.BLL;
+using StockManagementApp.DAL.Entity;
+using StockManagementApp.DAL.Enum;
+using StockManagementApp.DAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +18,10 @@ namespace StockManagementApp.UI
         StockOutManager stockOutManager = new StockOutManager();
         StockInManager stockInManager = new StockInManager();
         ItemManager itemManager = new ItemManager();
+        StockOutVM stockOutVM = new StockOutVM();
+        StockIn stockIn = new StockIn();
+        Item item = new Item();
+        List<StockOutVM> listOfVM ;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -52,13 +59,79 @@ namespace StockManagementApp.UI
         private void GetItem()
         {
 
-            //messageLabel.Text = String.Empty;
+            messageLabel.Text = String.Empty;
             var itemName = itemDropDownList.SelectedItem.Text;
-            var item = itemManager.Get(itemName);
+            item = itemManager.Get(itemName);
             var companyId = Convert.ToInt32(companyDropDownList.SelectedValue);
-            var stocIn = stockInManager.Get(item.Name, companyId);
-            availableQuantityTextBox.Text = stocIn.Quantity.ToString();
+            stockIn = stockInManager.Get(item.Name, companyId);
+            availableQuantityTextBox.Text = stockIn.Quantity.ToString();
             recorderLevelTextBox.Text = item.RecorderLevel.ToString();
+        }
+
+        public void AddItemToDropdown()
+        {
+            stockOutVM.Item = itemDropDownList.SelectedItem.Text;
+            stockOutVM.ItemId = Convert.ToInt32(itemDropDownList.SelectedValue);
+            stockOutVM.Company = companyDropDownList.SelectedItem.Text;
+            stockOutVM.CompanyId = Convert.ToInt32(companyDropDownList.SelectedValue);
+            stockOutVM.StockOutQuantity = Convert.ToInt32(stockOutTextBox.Text);
+
+            ViewState["ITEM"] = stockOutVM;
+        }
+
+        protected void addButton_Click(object sender, EventArgs e)
+        {
+            AddItemToDropdown();
+
+            var VM = (StockOutVM)ViewState["ITEM"];
+
+            if (ViewState["ITEMS"] == null)
+            {
+                listOfVM = new List<StockOutVM>();
+                listOfVM.Add(VM);
+                ViewState["ITEMS"] = listOfVM;
+            }
+
+            else
+            {
+                listOfVM = (List<StockOutVM>)ViewState["ITEMS"];
+                listOfVM.Add(VM);
+                ViewState["ITEMS"] = listOfVM;
+            }
+            
+            stockOutGridView.DataSource = listOfVM;
+            stockOutGridView.DataBind();
+        }
+
+        protected void sellButton_Click(object sender, EventArgs e)
+        {
+           var message ="";
+            List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
+            foreach (var i in items)
+            {
+                var stockOut = new StockOut();
+                stockOut.Quantity = i.StockOutQuantity;
+                stockOut.CompanyId = i.CompanyId;
+                stockOut.ItemId = i.ItemId;
+                stockOut.StockOutType = (int) StockOutType.Sell;
+
+
+                var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
+                itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
+                if(itemInStock.Quantity < 0)
+                {
+                    message = "Sorry!!! There is not enough number of item to sale.";
+                }
+                
+                else
+                {
+                     message = stockInManager.UpdateItemQuantity(itemInStock);
+                     message = stockOutManager.Save(stockOut);
+                }
+
+            }
+
+            messageLabel.Text = message;
         }
     }
 }

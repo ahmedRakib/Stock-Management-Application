@@ -90,7 +90,7 @@
     <Compile Include="DAL\Gateway\ItemGateway.cs" />
     <Compile Include="DAL\Gateway\StockInGateway.cs" />
     <Compile Include="DAL\Gateway\StockOutGateway.cs" />
-    <Compile Include="DAL\ViewModel\ItemStockInVM.cs" />
+    <Compile Include="DAL\ViewModel\StockOutVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\CategoryUI.aspx.cs">
       <DependentUpon>CategoryUI.aspx</DependentUpon>
@@ -127,6 +127,7 @@
     <Compile Include="UI\StockOutUI.aspx.designer.cs">
       <DependentUpon>StockOutUI.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\StockOutVm.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

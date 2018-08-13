@@ -114,6 +114,7 @@ namespace StockManagementApp.UI
                 stockOut.CompanyId = i.CompanyId;
                 stockOut.ItemId = i.ItemId;
                 stockOut.StockOutType = (int) StockOutType.Sell;
+                stockOut.Date = DateTime.Now.Date;
 
 
                 var itemInStock = stockInManager.Get(i.Item, i.CompanyId);

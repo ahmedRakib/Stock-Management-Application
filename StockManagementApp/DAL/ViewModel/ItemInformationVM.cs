@@ -11,5 +11,11 @@ namespace StockManagementApp.DAL.ViewModel
         public string CompanyName { get; set; }
 
         public int AvailableQuantity { get; set; }
+
+        public int StockOutQuantity { get; set; }
+
+        public int StockOutType { get; set; }
+
+        public string StockOutTypeName { get; set; }
     }
 }

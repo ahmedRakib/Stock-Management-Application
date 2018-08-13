@@ -10,7 +10,7 @@ namespace StockManagementApp.DAL.Gateway
     {
         public int Save(Entity.StockOut stockOut)
         {
-            Query = "INSERT INTO StockOut (CompanyId, ItemId, Quantity, StockOutType) VALUES ('" + stockOut.CompanyId + "', '" + stockOut.ItemId + "', '" + stockOut.Quantity + "', '" + stockOut.StockOutType+ "')";
+            Query = "INSERT INTO StockOut (CompanyId, ItemId, Quantity, StockOutType, StockOutDate) VALUES ('" + stockOut.CompanyId + "', '" + stockOut.ItemId + "', '" + stockOut.Quantity + "', '" + stockOut.StockOutType+ "', '"+stockOut.Date+"')";
 
             Command = new SqlCommand(Query, Connection);
 

@@ -91,6 +91,7 @@
     <Compile Include="DAL\Gateway\ItemGateway.cs" />
     <Compile Include="DAL\Gateway\StockInGateway.cs" />
     <Compile Include="DAL\Gateway\StockOutGateway.cs" />
+    <Compile Include="DAL\ViewModel\ItemInformationVM.cs" />
     <Compile Include="DAL\ViewModel\StockOutVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\CategoryUI.aspx.cs">

@@ -1,5 +1,6 @@
 ﻿using StockManagementApp.DAL.Entity;
 using StockManagementApp.DAL.Gateway;
+using StockManagementApp.DAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,16 @@ namespace StockManagementApp.BLL
         public Item Get(string itemName)
         {
            return itemGateway.Get(itemName);
+        }
+
+        internal List<ItemInformationVM> GetItemInfoByCompanyOrCategory(int companyId, int categoryId)
+        {
+            return itemGateway.GetItemInfoByCompanyOrCategory(companyId, categoryId);
+        }
+
+        internal List<ItemInformationVM> GetItemInfoByCompanyAndCategory(int companyId, int categoryId)
+        {
+            return itemGateway.GetItemInfoByCompanyAndCategory(companyId, categoryId);
         }
     }
 }

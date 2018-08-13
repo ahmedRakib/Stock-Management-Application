@@ -1,4 +1,5 @@
 ﻿using StockManagementApp.DAL.Entity;
+using StockManagementApp.DAL.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -94,6 +95,65 @@ namespace StockManagementApp.DAL.Gateway
             Connection.Close();
 
             return item;
+        }
+
+        internal List<ItemInformationVM> GetItemInfoByCompanyOrCategory(int companyId, int categoryId)
+        {
+            List<ItemInformationVM> ItemInfoVMS = new List<ItemInformationVM>();
+
+            Query = @"SELECT * FROM ItemByCompanyOrCategory 
+                        Where CategoryId = '" + categoryId + "' Or CompanyId = '" + companyId + "'";
+
+            Command = new SqlCommand(Query, Connection);
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            while (Reader.Read())
+            {
+                ItemInformationVM ItemInfoVM = new ItemInformationVM();
+
+                ItemInfoVM.Name = Reader["ItemName"].ToString();
+                ItemInfoVM.CompanyName = Reader["CompanyName"].ToString();
+                ItemInfoVM.RecorderLevel = Convert.ToInt32(Reader["RecorderLevel"]);
+                ItemInfoVM.AvailableQuantity = Convert.ToInt32(Reader["Quantity"]);
+
+                ItemInfoVMS.Add(ItemInfoVM);
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return ItemInfoVMS;
+        }
+
+        internal List<ItemInformationVM> GetItemInfoByCompanyAndCategory(int companyId, int categoryId)
+        {
+
+            List<ItemInformationVM> ItemInfoVMS = new List<ItemInformationVM>();
+
+            Query = @"SELECT * FROM ItemByCompanyOrCategory 
+                        Where CategoryId = '"+categoryId+"' And CompanyId = '"+companyId+"'";
+
+            Command = new SqlCommand(Query, Connection);
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            while (Reader.Read())
+            {
+                ItemInformationVM ItemInfoVM = new ItemInformationVM();
+
+                ItemInfoVM.Name = Reader["ItemName"].ToString();
+                ItemInfoVM.CompanyName = Reader["CompanyName"].ToString();
+                ItemInfoVM.RecorderLevel = Convert.ToInt32(Reader["RecorderLevel"]);
+                ItemInfoVM.AvailableQuantity = Convert.ToInt32(Reader["Quantity"]);
+
+                ItemInfoVMS.Add(ItemInfoVM);
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return ItemInfoVMS;
         }
     }
 }

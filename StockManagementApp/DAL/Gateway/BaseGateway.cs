@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace StockManagementApp.DAL.Gateway
 {
     public class BaseGateway
+
+
     {
-        public string connectionString = "Server = DESKTOP-78PMIPM; Database = StockManagementDB; Integrated Security = True";
+        private static string connectionString = WebConfigurationManager.ConnectionStrings["StockManagementSystemDB"].ConnectionString;
 
         public string Query { get; set; }
 

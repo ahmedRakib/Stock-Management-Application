@@ -115,6 +115,13 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\responsive.css" />
+    <Content Include="css\Style.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="images\3.jpg" />
     <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -139,6 +146,12 @@
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Scripts\index.d.ts" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="css\animate.min.css" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -260,6 +273,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="UI\CategoryUI.aspx" />
     <Content Include="UI\CompanyUI.aspx" />
+    <Content Include="UI\IndexUI.aspx" />
     <Content Include="UI\ItemSetupUI.aspx" />
     <Content Include="UI\SearchAndViewItemUI.aspx" />
     <Content Include="UI\StockInUI.aspx" />
@@ -301,6 +315,13 @@
     </Compile>
     <Compile Include="UI\CompanyUI.aspx.designer.cs">
       <DependentUpon>CompanyUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\IndexUI.aspx.cs">
+      <DependentUpon>IndexUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\IndexUI.aspx.designer.cs">
+      <DependentUpon>IndexUI.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\ItemSetupUI.aspx.cs">
       <DependentUpon>ItemSetupUI.aspx</DependentUpon>

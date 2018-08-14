@@ -71,6 +71,7 @@ namespace StockManagementApp.UI
 
             messageLabel.Text = stockInManager.Save(stockIn);
 
+            quantityTextBox.Text = stockIn.Quantity.ToString();
             stockInTextBox.Text = String.Empty;
         }
     }

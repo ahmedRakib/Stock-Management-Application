@@ -54,9 +54,8 @@ namespace StockManagementApp.DAL.Gateway
             return rowAffected;
         }
 
-        public int UpdateItemQuantity(StockIn itemInStock)
+        public int Update(StockIn itemInStock)
         {
-            //Query = "UPDATE  StockIn (CompanyId, ItemId, Quantity) VALUES ('" + stockIn.CompanyId + "', '" + stockIn.ItemId + "', '" + stockIn.Quantity + "')";
 
             Query = @"UPDATE StockIn 
                 SET CompanyId = '" + itemInStock.CompanyId + "', ItemId = '" + itemInStock.ItemId + "', Quantity = '" + itemInStock.Quantity + "' WHERE ItemId = '"+itemInStock.ItemId+"'";
@@ -69,5 +68,25 @@ namespace StockManagementApp.DAL.Gateway
 
             return rowAffected;
         }
+
+        internal bool DoesItemExist(int itemId)
+        {
+
+            Query = "SELECT * FROM StockIn WHERE ItemId = '" + itemId + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+
+
+        }
     }
-}

@@ -19,25 +19,42 @@ namespace StockManagementApp.BLL
 
         public string Save(DAL.Entity.StockIn stockIn)
         {
-            string message = ""; 
+            string message = "";
 
-            int rowAffected = stockInGateway.Save(stockIn);
+            bool itemExist = stockInGateway.DoesItemExist(stockIn.ItemId);
 
-            if (rowAffected > 0)
+            if (itemExist)
             {
-                message = "Saved Successfully";
+                int rowAffected = stockInGateway.Update(stockIn);
+                if (rowAffected > 0)
+                {
+                    message = "Saved Successfully";
+                }
+                else
+                {
+                    message = "Could not be saved";
+                }
             }
-            else
+            else 
             {
-                message = "Could not be saved";
-            }
+                int rowAffected = stockInGateway.Save(stockIn);
 
+                if (rowAffected > 0)
+                {
+                    message = "Saved Successfully";
+                }
+                else
+                {
+                    message = "Could not be saved";
+                }
+            }
+           
             return message;
         }
 
         public string UpdateItemQuantity(StockIn itemInStock)
         {
-            int rowAffected= stockInGateway.UpdateItemQuantity(itemInStock);
+            int rowAffected= stockInGateway.Update(itemInStock);
 
             if (rowAffected > 0)
             {

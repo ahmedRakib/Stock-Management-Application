@@ -26,27 +26,27 @@
 				
                 <div class="collapse navbar-collapse navbar-left">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="Index.aspx">Home</a></li> 
+                        <li class="active"><a href="IndexUI.aspx">Home</a></li> 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Setup<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="TestTypeSetup.aspx">Category Setup</a></li>                        
-                                <li><a href="TestSetup.aspx">Company Setup</a></li> 
-                                  <li><a href="TestSetup.aspx">Item Setup</a></li>                               
+                                <li><a href="CategoryUI.aspx">Category Setup</a></li>                        
+                                <li><a href="CompanyUI.aspx">Company Setup</a></li> 
+                                  <li><a href="ItemSetupUI.aspx">Item Setup</a></li>                               
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Stock Manager<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="TestRequestEntry.aspx">Stock In</a></li>                        
-                                <li><a href="Payment.aspx">Stock Out</a></li>                              
+                                <li><a href="StockInUI.aspx">Stock In</a></li>                        
+                                <li><a href="StockOutUI.aspx">Stock Out</a></li>                              
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Report<i class="fa fa-angle-down"></i></a>
                             <ul class="dropdown-menu">
-                                <li><a href="TestWiseReport.aspx">Item Info</a></li>                        
-                                <li><a href="TypeWiseReport.aspx">Sell Info</a></li>                              
+                                <li><a href="SearchAndViewItemUI.aspx">Item Info</a></li>                        
+                                <li><a href="ViewSalesBetweenDatesUI.aspx">Sell Info</a></li>                              
                             </ul>
                         </li>   
                                                                    

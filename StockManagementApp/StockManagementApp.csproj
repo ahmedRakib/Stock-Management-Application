@@ -121,7 +121,7 @@
     <Content Include="css\responsive.css" />
     <Content Include="css\Style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="images\3.jpg" />
+    <Content Include="images\image.jpg" />
     <Content Include="packages.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />

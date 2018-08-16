@@ -61,7 +61,7 @@
         </header>
         <!--/header-->
         <div class="story-container">
-            <img src="../images/3.jpg" width="1000px;" hight="768px;" alt="logo" />
+            <img src="../images/image.jpg" width="998px;" hight="768px;" alt="logo" />
         </div>
         <footer style="font-family: cursive; background-color: #004C99">Developed By @RAKIB </footer>
     </div>

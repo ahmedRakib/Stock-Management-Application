@@ -14,6 +14,16 @@
     <link href="../css/main.css" rel="stylesheet" />
     <link href="../css/responsive.css" rel="stylesheet" />
 
+    
+     <style>
+        label.error {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+
+
 </head>
 <body>
     <div class="homepage">
@@ -131,6 +141,32 @@
         <div>
             <footer style="font-family: cursive; background-color: #004C99">Developed By @RAKIB </footer>
         </div>
+
+          <script src="../Scripts/jquery-3.3.1.js"></script>
+        <script src="../Scripts/jquery.validate.js"></script>
+        <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+       
+        <script>
+            $().ready(function () {
+
+                // validate signup form on keyup and submit
+                $("#form2").validate({
+                    rules: {
+                        stockInTextBox:
+                            {
+                                required: true,
+                                number: true,
+                            }
+                    },
+                    messages: {
+                        stockInTextBox: {
+                            required: "Please enter stock in quantity",
+                            number: "Please enter a number"
+                        }
+                    }
+                });
+            });
+        </script>
 </body>
 </html>
 

@@ -34,13 +34,13 @@ namespace StockManagementApp.UI
                 companyDropDownList.DataValueField = "Id";
                 companyDropDownList.DataTextField = "Name";
                 companyDropDownList.DataBind();
-                //companyDropDownList.Items.Insert(0, "Select");
+                companyDropDownList.Items.Insert(0, new ListItem("--Select--", "0"));
 
                 itemDropDownList.DataSource = items;
                 itemDropDownList.DataValueField = "Id";
                 itemDropDownList.DataTextField = "Name";
                 itemDropDownList.DataBind();
-                itemDropDownList.Items.Insert(0, "Select");
+                itemDropDownList.Items.Insert(0, new ListItem("--Select--", "0"));
             }
 
             GetItem();

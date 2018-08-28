@@ -26,11 +26,13 @@ namespace StockManagementApp.UI
                 categoryDropDownList.DataTextField = "Name";
                 categoryDropDownList.DataValueField = "Id";
                 categoryDropDownList.DataBind();
+                categoryDropDownList.Items.Insert(0, new ListItem("--Select--", "0"));
 
                 companyDropDownList.DataSource = companies;
                 companyDropDownList.DataTextField = "Name";
                 companyDropDownList.DataValueField = "Id";
                 companyDropDownList.DataBind();
+                companyDropDownList.Items.Insert(0, new ListItem("--Select--", "0"));
 
                 recorderLevelTextBox.Text = "0";
             }

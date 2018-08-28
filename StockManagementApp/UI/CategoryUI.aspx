@@ -5,17 +5,23 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
     <title></title>
     <link href="../css/Style.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <%--<link href="../css/bootstrap.min.css" rel="stylesheet" />--%>
     <link href="../css/font-awesome.min.css" rel="stylesheet" />
     <link href="../css/animate.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
     <link href="../css/responsive.css" rel="stylesheet" />
+    <style>
+        label.error {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
 
 </head>
+
 <body>
     <div class="homepage">
         <header id="header">
@@ -75,7 +81,7 @@
                                     <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="nameTextBox" runat="server"></asp:TextBox>
+                                     <asp:TextBox ID="nameTextBox"  runat="server" Width="150px"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
@@ -127,5 +133,24 @@
         <div>
             <footer style="font-family: cursive; background-color: #004C99">Developed By  @RAKIB </footer>
         </div>
+
+        <script src="../Scripts/jquery-3.3.1.js"></script>
+        <script src="../Scripts/jquery.validate.js"></script>
+        <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+       
+        <script>
+            $().ready(function () {
+
+                // validate signup form on keyup and submit
+                $("#form1").validate({
+                    rules: {
+                        nameTextBox: "required",
+                    },
+                    messages: {
+                        nameTextBox: "Please enter category  name",
+                    }
+                });
+            });
+        </script>
 </body>
 </html>

@@ -14,6 +14,14 @@
     <link href="../css/main.css" rel="stylesheet" />
     <link href="../css/responsive.css" rel="stylesheet" />
     <link href="../Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+    <style>
+        label.error {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <div class="homepage">
@@ -142,7 +150,9 @@
             <footer style="font-family: cursive; background-color: #004C99">Developed By @RAKIB </footer>
         </div>
         <script src="../Scripts/jquery-3.3.1.min.js"></script>
+        <script src="../Scripts/jquery.validate.js"></script>
         <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
+
         <script>
             $(function () {
                 $('#fromDateTextBox').datepicker(
@@ -160,6 +170,29 @@
                   changeYear: true,
                   yearRange: '1950:2100'
               });
+                // validate signup form on keyup and submit
+                $("#form2").validate({
+                    rules: {
+                        fromDateTextBox: "required",
+                        toDateTextBox: "required",
+                        from
+                    },
+                    messages: {
+                        fromDateTextBox: "Please select a date",
+                        toDateTextBox: "Please select a date",
+                    }
+                });
+
+                //greater or equal checker
+                $("#toDateTextBox").change(function () {
+                    var startDate = document.getElementById("fromDateTextBox").value;
+                    var endDate = document.getElementById("toDateTextBox").value;
+
+                    if ((Date.parse(startDate) >= Date.parse(endDate))) {
+                        alert("End date should be greater than Start date");
+                        document.getElementById("EndDate").value = "";
+                    }
+                });
             })
         </script>
 </body>

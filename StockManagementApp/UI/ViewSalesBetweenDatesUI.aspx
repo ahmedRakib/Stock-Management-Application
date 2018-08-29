@@ -68,6 +68,7 @@
         </header>
         <!--/header-->
 
+        </div>
 
         <div class="story-container" style="height: 400px; width: 1000px">
 
@@ -175,8 +176,7 @@
                     rules: {
                         fromDateTextBox: "required",
                         toDateTextBox: "required",
-                        from
-                    },
+                        },
                     messages: {
                         fromDateTextBox: "Please select a date",
                         toDateTextBox: "Please select a date",

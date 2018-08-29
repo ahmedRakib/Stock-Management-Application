@@ -128,6 +128,8 @@ namespace StockManagementApp.UI
                 {
                      message = stockInManager.UpdateItemQuantity(itemInStock);
                      message = stockOutManager.Save(stockOut);
+                     availableQuantityTextBox.Text = itemInStock.Quantity.ToString();
+                     stockOutTextBox.Text = String.Empty;
                 }
             }
 

@@ -34,7 +34,6 @@ namespace StockManagementApp.UI
                 companyDropDownList.DataBind();
                 companyDropDownList.Items.Insert(0, new ListItem("--Select--", "0"));
 
-                recorderLevelTextBox.Text = "0";
             }
         }
 

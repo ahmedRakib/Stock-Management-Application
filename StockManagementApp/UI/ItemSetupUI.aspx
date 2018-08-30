@@ -148,9 +148,17 @@
                 $("#form2").validate({
                     rules: {
                         itemNameTextBox: "required",
+                        recorderLevelTextBox: {
+                            required: true,
+                            number: true,
+                        },
                     },
                     messages: {
                         itemNameTextBox: "Please enter Item  name",
+                        recorderLevelTextBox: {
+                            required: "Please enter a recorder level",
+                            number: "Please enter a number",
+                        },
                     }
                 });
             });

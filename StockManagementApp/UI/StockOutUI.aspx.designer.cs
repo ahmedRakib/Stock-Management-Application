@@ -121,6 +121,15 @@ namespace StockManagementApp.UI {
         protected global::System.Web.UI.WebControls.Button addButton;
         
         /// <summary>
+        /// messageLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label messageLabel;
+        
+        /// <summary>
         /// stockOutGridView control.
         /// </summary>
         /// <remarks>
@@ -155,14 +164,5 @@ namespace StockManagementApp.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button lostButton;
-        
-        /// <summary>
-        /// messageLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messageLabel;
     }
 }

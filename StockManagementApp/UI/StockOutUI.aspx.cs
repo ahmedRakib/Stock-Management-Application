@@ -83,117 +83,157 @@ namespace StockManagementApp.UI
         {
             AddItemToDropdown();
 
-            var VM = (StockOutVM)ViewState["ITEM"];
+            var stockInQuantity = Convert.ToInt32(availableQuantityTextBox.Text);
+            var stockOutQuantity = Convert.ToInt32(stockOutTextBox.Text);
 
-            if (ViewState["ITEMS"] == null)
+            if (stockOutQuantity > stockInQuantity)
             {
-                listOfVM = new List<StockOutVM>();
-                listOfVM.Add(VM);
-                ViewState["ITEMS"] = listOfVM;
+                messageLabel.Text = "Not enough item to stock out";
             }
 
             else
             {
-                listOfVM = (List<StockOutVM>)ViewState["ITEMS"];
-                listOfVM.Add(VM);
-                ViewState["ITEMS"] = listOfVM;
+                var VM = (StockOutVM)ViewState["ITEM"];
+
+                if (ViewState["ITEMS"] == null)
+                {
+                    listOfVM = new List<StockOutVM>();
+                    listOfVM.Add(VM);
+                    ViewState["ITEMS"] = listOfVM;
+                }
+
+                else
+                {
+                    listOfVM = (List<StockOutVM>)ViewState["ITEMS"];
+                    listOfVM.Add(VM);
+                    ViewState["ITEMS"] = listOfVM;
+                }
+
+                stockOutGridView.DataSource = listOfVM;
+                stockOutGridView.DataBind();
             }
-            
-            stockOutGridView.DataSource = listOfVM;
-            stockOutGridView.DataBind();
+           
         }
 
         protected void sellButton_Click(object sender, EventArgs e)
         {
-           var message ="";
-            List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
-            foreach (var i in items)
+            if (stockOutGridView.Rows.Count == 0)
             {
-                var stockOut = new StockOut();
-                stockOut.Quantity = i.StockOutQuantity;
-                stockOut.CompanyId = i.CompanyId;
-                stockOut.ItemId = i.ItemId;
-                stockOut.StockOutType = (int) StockOutType.Sell;
-                stockOut.Date = DateTime.Now.Date;
-
-
-                var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
-                itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
-                if(itemInStock.Quantity < 0)
-                {
-                    message = "Sorry!!! There is not enough number of item to sale.";
-                }
-                
-                else
-                {
-                     message = stockInManager.UpdateItemQuantity(itemInStock);
-                     message = stockOutManager.Save(stockOut);
-                     availableQuantityTextBox.Text = itemInStock.Quantity.ToString();
-                     stockOutTextBox.Text = String.Empty;
-                }
+                messageLabel.Text = "Please add item first";
             }
+            else 
+            {
+                var message = "";
+                List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
+                foreach (var i in items)
+                {
+                    var stockOut = new StockOut();
+                    stockOut.Quantity = i.StockOutQuantity;
+                    stockOut.CompanyId = i.CompanyId;
+                    stockOut.ItemId = i.ItemId;
+                    stockOut.StockOutType = (int)StockOutType.Sell;
+                    stockOut.Date = DateTime.Now.Date;
 
-            messageLabel.Text = message;
+
+                    var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
+                    itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
+                    if (itemInStock.Quantity < 0)
+                    {
+                        message = "Sorry!!! There is not enough number of item to sale.";
+                    }
+
+                    else
+                    {
+                        message = stockInManager.UpdateItemQuantity(itemInStock);
+                        message = stockOutManager.Save(stockOut);
+                        availableQuantityTextBox.Text = itemInStock.Quantity.ToString();
+                        stockOutTextBox.Text = String.Empty;
+                    }
+                }
+
+                messageLabel.Text = message;
+            }
+           
         }
 
         protected void damageButton_Click(object sender, EventArgs e)
         {
-            var message = "";
-            List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
-            foreach (var i in items)
+            if (stockOutGridView.Rows.Count == 0)
             {
-                var stockOut = new StockOut();
-                stockOut.Quantity = i.StockOutQuantity;
-                stockOut.CompanyId = i.CompanyId;
-                stockOut.ItemId = i.ItemId;
-                stockOut.StockOutType = (int)StockOutType.Damage;
-
-
-                var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
-                itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
-                if (itemInStock.Quantity < 0)
-                {
-                    message = "Sorry!!! There is not enough number of item to sale.";
-                }
-
-                else
-                {
-                    message = stockInManager.UpdateItemQuantity(itemInStock);
-                    message = stockOutManager.Save(stockOut);
-                }
+                messageLabel.Text = "Please add item first";
             }
+            else
+            {
+                var message = "";
+                List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
+                foreach (var i in items)
+                {
+                    var stockOut = new StockOut();
+                    stockOut.Quantity = i.StockOutQuantity;
+                    stockOut.CompanyId = i.CompanyId;
+                    stockOut.ItemId = i.ItemId;
+                    stockOut.StockOutType = (int)StockOutType.Damage;
+                    stockOut.Date = DateTime.Now.Date;
 
-            messageLabel.Text = message;
+
+                    var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
+                    itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
+                    if (itemInStock.Quantity < 0)
+                    {
+                        message = "Sorry!!! There is not enough number of item to sale.";
+                    }
+
+                    else
+                    {
+                        message = stockInManager.UpdateItemQuantity(itemInStock);
+                        message = stockOutManager.Save(stockOut);
+                        availableQuantityTextBox.Text = itemInStock.Quantity.ToString();
+                        stockOutTextBox.Text = String.Empty;
+                    }
+                }
+
+                messageLabel.Text = message;
+            }
         }
 
         protected void lostButton_Click(object sender, EventArgs e)
         {
-            var message = "";
-            List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
-            foreach (var i in items)
+            if (stockOutGridView.Rows.Count == 0)
             {
-                var stockOut = new StockOut();
-                stockOut.Quantity = i.StockOutQuantity;
-                stockOut.CompanyId = i.CompanyId;
-                stockOut.ItemId = i.ItemId;
-                stockOut.StockOutType = (int)StockOutType.Lost;
-
-
-                var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
-                itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
-                if (itemInStock.Quantity < 0)
-                {
-                    message = "Sorry!!! There is not enough number of item to sale.";
-                }
-
-                else
-                {
-                    message = stockInManager.UpdateItemQuantity(itemInStock);
-                    message = stockOutManager.Save(stockOut);
-                }
+                messageLabel.Text = "Please add item first";
             }
+            else
+            {
+                var message = "";
+                List<StockOutVM> items = (List<StockOutVM>)ViewState["ITEMS"];
+                foreach (var i in items)
+                {
+                    var stockOut = new StockOut();
+                    stockOut.Quantity = i.StockOutQuantity;
+                    stockOut.CompanyId = i.CompanyId;
+                    stockOut.ItemId = i.ItemId;
+                    stockOut.StockOutType = (int)StockOutType.Lost;
+                    stockOut.Date = DateTime.Now.Date;
 
-            messageLabel.Text = message;
+
+                    var itemInStock = stockInManager.Get(i.Item, i.CompanyId);
+                    itemInStock.Quantity = itemInStock.Quantity - stockOut.Quantity;
+                    if (itemInStock.Quantity < 0)
+                    {
+                        message = "Sorry!!! There is not enough number of item to sale.";
+                    }
+
+                    else
+                    {
+                        message = stockInManager.UpdateItemQuantity(itemInStock);
+                        message = stockOutManager.Save(stockOut);
+                        availableQuantityTextBox.Text = itemInStock.Quantity.ToString();
+                        stockOutTextBox.Text = String.Empty;
+                    }
+                }
+
+                messageLabel.Text = message;
+            }
         }
     }
 }

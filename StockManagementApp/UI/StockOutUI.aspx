@@ -127,12 +127,16 @@
                                 <td>
                                     <asp:Button ID="addButton" runat="server" Text="Add" OnClick="addButton_Click" />
                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td></td>
+                                 <td> <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label></td>
                             </tr>
                         </table>
                     </div>
 
-
-                    <asp:GridView ID="stockOutGridView" runat="server" Width="584px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                    <asp:GridView ID="stockOutGridView" runat="server" Width="664px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                         <RowStyle HorizontalAlign="Center" />
                         <Columns>
                             <asp:TemplateField HeaderText="#SL">
@@ -173,9 +177,10 @@
                         <SortedDescendingCellStyle BackColor="#D6DFDF" />
                         <SortedDescendingHeaderStyle BackColor="#002876" />
                     </asp:GridView>
-
+                  
                     <table>
                         <tr>
+                            
                             <td>
                                 <asp:Button ID="sellButton" runat="server" Text="Sell" OnClick="sellButton_Click" /></td>
                             <td>
@@ -185,7 +190,7 @@
                         </tr>
                     </table>
 
-                    <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>
+                   
                 </form>
             </div>
         </div>
@@ -199,16 +204,6 @@
        
         <script>
             $(document).ready(function () {
-                $("#sellButton").hide()
-                $("#damageButton").hide()
-                $("#lostButton").hide()
-
-                $("#addButton").click(function () {
-                    $("#sellButton").show()
-                    $("#damageButton").show()
-                    $("#lostButton").show()
-
-            });
 
                 $().ready(function () {
 

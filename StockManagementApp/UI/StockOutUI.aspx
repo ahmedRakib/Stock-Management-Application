@@ -67,7 +67,7 @@
 
         </header>
         <!--/header-->
-
+        </div>
 
         <div class="story-container" style="height: 400px; width: 1000px">
 
@@ -198,25 +198,38 @@
         <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
        
         <script>
-            $().ready(function () {
+            $(document).ready(function () {
+                $("#sellButton").hide()
+                $("#damageButton").hide()
+                $("#lostButton").hide()
 
-                // validate signup form on keyup and submit
-                $("#form2").validate({
-                    rules: {
-                        stockOutTextBox:
-                            {
-                                required: true,
-                                number: true,
-                            }
-                    },
-                    messages: {
-                        stockOutTextBox:{
-                            required: "Please enter stock out quantity",
-                            number: "Please enter a number"
-                        } 
-                    }
-                });
+                $("#addButton").click(function () {
+                    $("#sellButton").show()
+                    $("#damageButton").show()
+                    $("#lostButton").show()
+
             });
+
+                $().ready(function () {
+
+                    // validate signup form on keyup and submit
+                    $("#form2").validate({
+                        rules: {
+                            stockOutTextBox:
+                                {
+                                    required: true,
+                                    number: true,
+                                }
+                        },
+                        messages: {
+                            stockOutTextBox: {
+                                required: "Please enter stock out quantity",
+                                number: "Please enter a number"
+                            }
+                        }
+                    });
+                    });
+                 });
         </script>
 </body>
 </html>

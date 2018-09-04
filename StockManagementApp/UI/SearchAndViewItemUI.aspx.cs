@@ -38,21 +38,36 @@ namespace StockManagementApp.UI
 
         protected void searchButton_Click(object sender, EventArgs e)
         {
+            var message = "";
             var companyId = Convert.ToInt32(companyDropDownList.SelectedValue);
             var categoryId = Convert.ToInt32(categoryDropDownList.SelectedValue);
 
-            if (companyId != 0 && categoryId != 0)
+            if (companyId == 0 && categoryId == 0)
             {
-                var itemInfoVM = itemManager.GetItemInfoByCompanyAndCategory(companyId, categoryId);
-                itemInfoGridView.DataSource = itemInfoVM;
-                itemInfoGridView.DataBind();
+                message = "Please Select both or any of them";
             }
-            else
+            else 
             {
-                var itemInfoVM = itemManager.GetItemInfoByCompanyOrCategory(companyId, categoryId);
-                itemInfoGridView.DataSource = itemInfoVM;
-                itemInfoGridView.DataBind();
+                if (companyId != 0 && categoryId != 0)
+                {
+                    var itemInfoVM = itemManager.GetItemInfoByCompanyAndCategory(companyId, categoryId);
+                    itemInfoGridView.DataSource = itemInfoVM;
+                    itemInfoGridView.DataBind();
+                }
+                else
+                {
+                    var itemInfoVM = itemManager.GetItemInfoByCompanyOrCategory(companyId, categoryId);
+                    itemInfoGridView.DataSource = itemInfoVM;
+                    itemInfoGridView.DataBind();
+                }
+
+                if (itemInfoGridView.Rows.Count == 0)
+                {
+                    message = "Not found any item";
+                }
             }
+
+            messageLabel.Text = message;
         }
     }
 }

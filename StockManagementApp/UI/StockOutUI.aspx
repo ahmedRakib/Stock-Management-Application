@@ -67,7 +67,7 @@
 
         </header>
         <!--/header-->
-
+        </div>
 
         <div class="story-container" style="height: 400px; width: 1000px">
 
@@ -127,12 +127,16 @@
                                 <td>
                                     <asp:Button ID="addButton" runat="server" Text="Add" OnClick="addButton_Click" />
                                 </td>
+                               
+                            </tr>
+                            <tr>
+                                <td></td>
+                                 <td> <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label></td>
                             </tr>
                         </table>
                     </div>
 
-
-                    <asp:GridView ID="stockOutGridView" runat="server" Width="584px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                    <asp:GridView ID="stockOutGridView" runat="server" Width="664px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
                         <RowStyle HorizontalAlign="Center" />
                         <Columns>
                             <asp:TemplateField HeaderText="#SL">
@@ -173,9 +177,10 @@
                         <SortedDescendingCellStyle BackColor="#D6DFDF" />
                         <SortedDescendingHeaderStyle BackColor="#002876" />
                     </asp:GridView>
-
+                  
                     <table>
                         <tr>
+                            
                             <td>
                                 <asp:Button ID="sellButton" runat="server" Text="Sell" OnClick="sellButton_Click" /></td>
                             <td>
@@ -185,7 +190,7 @@
                         </tr>
                     </table>
 
-                    <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>
+                   
                 </form>
             </div>
         </div>
@@ -198,25 +203,28 @@
         <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
        
         <script>
-            $().ready(function () {
+            $(document).ready(function () {
 
-                // validate signup form on keyup and submit
-                $("#form2").validate({
-                    rules: {
-                        stockOutTextBox:
-                            {
-                                required: true,
-                                number: true,
+                $().ready(function () {
+
+                    // validate signup form on keyup and submit
+                    $("#form2").validate({
+                        rules: {
+                            stockOutTextBox:
+                                {
+                                    required: true,
+                                    number: true,
+                                }
+                        },
+                        messages: {
+                            stockOutTextBox: {
+                                required: "Please enter stock out quantity",
+                                number: "Please enter a number"
                             }
-                    },
-                    messages: {
-                        stockOutTextBox:{
-                            required: "Please enter stock out quantity",
-                            number: "Please enter a number"
-                        } 
-                    }
-                });
-            });
+                        }
+                    });
+                    });
+                 });
         </script>
 </body>
 </html>

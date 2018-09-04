@@ -60,7 +60,7 @@
 
         </header>
         <!--/header-->
-
+        </div>
 
         <div class="story-container" style="height: 400px; width: 1000px">
 
@@ -93,6 +93,8 @@
                                 <td></td>
                                 <td>
                                     <asp:Button ID="searchButton" runat="server" Text="Search" OnClick="searchButton_Click" />
+                                    <br />
+                                    <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>
                                 </td>
                             </tr>
 

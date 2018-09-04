@@ -46,7 +46,15 @@ namespace StockManagementApp.UI
             item.CategoryId = Convert.ToInt32(categoryDropDownList.SelectedValue);
             item.CompanyId = Convert.ToInt32(companyDropDownList.SelectedValue);
 
-            messageLabel.Text = itemManager.Save(item);
+            if (item.CompanyId == 0 || item.CategoryId == 0)
+            {
+                messageLabel.Text = "Please Select Item Company Name and Category";
+            }
+            else
+            {
+                messageLabel.Text = itemManager.Save(item);
+            }
+
         }
     }
 }

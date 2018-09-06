@@ -23,9 +23,9 @@ namespace StockManagementApp.DAL.Gateway
             return rowAffected;
         }
 
-        public bool DoesItemNameExists(string itemName)
+        public bool DoesItemNameOrRecorderLevelExists(string itemName, int recorderLevel)
         {
-            Query = "SELECT * FROM Item WHERE Name = '" + itemName + "'";
+            Query = "SELECT * FROM Item WHERE Name = '" + itemName + "' or RecorderLevel = '"+recorderLevel+"'";
 
             Command = new SqlCommand(Query, Connection);
 

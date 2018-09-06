@@ -24,7 +24,7 @@ namespace StockManagementApp.UI
 
             string message = categoryManager.Save(category);
 
-            messageLabel.Text = message;
+            messageLabel.InnerText = message;
 
             GetAllCatagories();
         }

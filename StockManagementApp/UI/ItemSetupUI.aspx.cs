@@ -48,11 +48,11 @@ namespace StockManagementApp.UI
 
             if (item.CompanyId == 0 || item.CategoryId == 0)
             {
-                messageLabel.Text = "Please Select Item Company Name and Category";
+                messageLabel.InnerText = "Please Select Item Company Name and Category";
             }
             else
             {
-                messageLabel.Text = itemManager.Save(item);
+                messageLabel.InnerText = itemManager.Save(item);
             }
 
         }

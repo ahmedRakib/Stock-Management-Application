@@ -16,9 +16,9 @@ namespace StockManagementApp.BLL
         {
             string message = "";
 
-            if (itemGateway.DoesItemNameExists(item.Name))
+            if (itemGateway.DoesItemNameOrRecorderLevelExists(item.Name, item.RecorderLevel))
             {
-                message = "The Item Name Already Exists";
+                message = "The Item Name or The Recorder Level already exits";
             }
             else
             {

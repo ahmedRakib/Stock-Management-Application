@@ -127,7 +127,7 @@ namespace StockManagementApp.UI {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label messageLabel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl messageLabel;
         
         /// <summary>
         /// stockOutGridView control.

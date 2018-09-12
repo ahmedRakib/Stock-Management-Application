@@ -26,7 +26,7 @@ namespace StockManagementApp.UI
 
             string message = companyManager.Save(Company);
 
-            messageLabel.Text = message;
+            messageLabel.InnerText = message;
 
             GetAllCompanies();
         }

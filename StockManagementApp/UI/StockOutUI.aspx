@@ -20,6 +20,11 @@
             font-weight: bold;
             font-style: italic;
         }
+        .messageLabel {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
     </style>
 
 </head>
@@ -69,7 +74,7 @@
         <!--/header-->
         </div>
 
-        <div class="story-container" style="height: 400px; width: 1000px">
+        <div class="story-container" style="height: 400px; width: 1010px">
 
             <div class="story-content2">
                 <h2 class="story-header">Item Stock Out</h2>
@@ -131,7 +136,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                 <td> <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label></td>
+                                 <td>  <span id ="messageLabel" class="messageLabel" runat="server"></span></td>
                             </tr>
                         </table>
                     </div>

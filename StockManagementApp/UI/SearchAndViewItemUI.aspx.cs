@@ -67,7 +67,7 @@ namespace StockManagementApp.UI
                 }
             }
 
-            messageLabel.Text = message;
+            messageLabel.InnerText = message;
         }
     }
 }

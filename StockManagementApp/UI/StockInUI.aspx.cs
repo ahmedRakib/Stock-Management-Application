@@ -54,7 +54,7 @@ namespace StockManagementApp.UI
         private void GetItem()
         {
            
-            messageLabel.Text = String.Empty;
+            messageLabel.InnerText = String.Empty;
             var itemName = itemDropDownList.SelectedItem.Text;
             var item  = itemManager.Get(itemName);
             var companyId = Convert.ToInt32(companyDropDownList.SelectedValue);
@@ -73,14 +73,15 @@ namespace StockManagementApp.UI
 
             if (stockIn.CompanyId == 0 || stockIn.ItemId == 0)
             {
-                messageLabel.Text = "Please Select Item and Company";
+                messageLabel.InnerText = "Please Select Item and Company";
             }
             else 
             {
-                messageLabel.Text = stockInManager.Save(stockIn);
+                messageLabel.InnerText = stockInManager.Save(stockIn);
+                quantityTextBox.Text = stockIn.Quantity.ToString();
             }
           
-            quantityTextBox.Text = stockIn.Quantity.ToString();
+            
             stockInTextBox.Text = String.Empty;
         }
     }

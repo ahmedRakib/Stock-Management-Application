@@ -59,7 +59,7 @@ namespace StockManagementApp.UI
         private void GetItem()
         {
 
-            messageLabel.Text = String.Empty;
+            messageLabel.InnerText = String.Empty;
             var itemName = itemDropDownList.SelectedItem.Text;
             item = itemManager.Get(itemName);
             var companyId = Convert.ToInt32(companyDropDownList.SelectedValue);
@@ -88,7 +88,7 @@ namespace StockManagementApp.UI
 
             if (stockOutQuantity > stockInQuantity)
             {
-                messageLabel.Text = "Not enough item to stock out";
+                messageLabel.InnerText = "Not enough item to stock out";
             }
 
             else
@@ -119,7 +119,7 @@ namespace StockManagementApp.UI
         {
             if (stockOutGridView.Rows.Count == 0)
             {
-                messageLabel.Text = "Please add item first";
+                messageLabel.InnerText = "Please add item first";
             }
             else 
             {
@@ -151,7 +151,7 @@ namespace StockManagementApp.UI
                     }
                 }
 
-                messageLabel.Text = message;
+                messageLabel.InnerText = message;
             }
            
         }
@@ -160,7 +160,7 @@ namespace StockManagementApp.UI
         {
             if (stockOutGridView.Rows.Count == 0)
             {
-                messageLabel.Text = "Please add item first";
+                messageLabel.InnerText = "Please add item first";
             }
             else
             {
@@ -192,7 +192,7 @@ namespace StockManagementApp.UI
                     }
                 }
 
-                messageLabel.Text = message;
+                messageLabel.InnerText = message;
             }
         }
 
@@ -200,7 +200,7 @@ namespace StockManagementApp.UI
         {
             if (stockOutGridView.Rows.Count == 0)
             {
-                messageLabel.Text = "Please add item first";
+                messageLabel.InnerText = "Please add item first";
             }
             else
             {
@@ -232,7 +232,7 @@ namespace StockManagementApp.UI
                     }
                 }
 
-                messageLabel.Text = message;
+                messageLabel.InnerText = message;
             }
         }
     }

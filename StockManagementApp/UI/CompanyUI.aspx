@@ -21,6 +21,11 @@
             font-weight: bold;
             font-style: italic;
         }
+        .messageLabel {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
     </style>
 
 </head>
@@ -95,7 +100,8 @@
 
                             <tr>
                                 <td>
-                                    <asp:Label ID="messageLabel" runat="server"></asp:Label>
+                                     <span id ="messageLabel" class="messageLabel" runat="server"></span>
+
                                 </td>
                             </tr>
                         </table>

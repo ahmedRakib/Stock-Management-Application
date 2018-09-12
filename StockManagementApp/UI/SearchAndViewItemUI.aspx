@@ -15,6 +15,19 @@
     <link href="../css/main.css" rel="stylesheet" />
     <link href="../css/responsive.css" rel="stylesheet" />
 
+     <style>
+        label.error {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .messageLabel {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+
 </head>
 <body>
     <div class="homepage">
@@ -94,7 +107,8 @@
                                 <td>
                                     <asp:Button ID="searchButton" runat="server" Text="Search" OnClick="searchButton_Click" />
                                     <br />
-                                    <asp:Label ID="messageLabel" runat="server" Text=""></asp:Label>
+                                     <span id ="messageLabel" class="messageLabel" runat="server"></span>
+
                                 </td>
                             </tr>
 

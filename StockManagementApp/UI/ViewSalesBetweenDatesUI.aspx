@@ -21,6 +21,11 @@
             font-weight: bold;
             font-style: italic;
         }
+        .messageLabel {
+            color: red;
+            font-weight: bold;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>

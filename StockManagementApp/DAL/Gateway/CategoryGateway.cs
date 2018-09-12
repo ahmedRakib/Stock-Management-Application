@@ -11,7 +11,7 @@ namespace StockManagementApp.DAL.Gateway
     {
         public int Save(Category category)
         {
-            Query = "INSERT INTO Category (Name) VALUES ('"+category.Name+"')";
+            Query = "sp_SaveCategory @name = '"+category.Name+"'";
 
             Command = new SqlCommand(Query, Connection);
 
@@ -41,7 +41,7 @@ namespace StockManagementApp.DAL.Gateway
 
         public List<Category> GetAll()
         {
-            Query = "SELECT * FROM Category";
+            Query = "sp_GetAllCategory";
 
             Command = new SqlCommand(Query, Connection);
 

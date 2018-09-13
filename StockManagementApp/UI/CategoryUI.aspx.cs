@@ -32,7 +32,7 @@ namespace StockManagementApp.UI
         public void GetAllCatagories()
         {
             var catgeories = categoryManager.GetAll();
-
+            
             categoryGridView.DataSource = catgeories;
             categoryGridView.DataBind();
         }

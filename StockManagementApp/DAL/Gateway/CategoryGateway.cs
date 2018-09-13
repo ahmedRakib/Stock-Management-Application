@@ -66,5 +66,59 @@ namespace StockManagementApp.DAL.Gateway
 
             return categories;
         }
+
+        public Category Get(int id)
+        {
+            Category category = new Category();
+
+            Query = "select * from Category where Id = '"+id+"'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            while (Reader.Read())
+            {
+                category.Id = Convert.ToInt32(Reader["Id"]);
+                category.Name = Reader["Name"].ToString();
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return category;
+        }
+
+        internal int Edit(Category category)
+        {
+
+            Query = "sp_EditCategory @name = '" + category.Name + "', @id = '"+category.Id+"'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            int rowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+
+            return rowAffected;
+        }
+
+        internal int Delete(int categoryId)
+        {
+            Category category = new Category();
+
+            Query = "delete  from Category where Id = '" + categoryId + "'";
+
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            int rowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+
+            return rowAffected;
+        }
     }
 }

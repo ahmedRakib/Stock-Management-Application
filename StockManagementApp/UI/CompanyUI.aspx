@@ -120,7 +120,8 @@
             <Columns>
                 <asp:TemplateField HeaderText="Company Name">
                     <ItemTemplate>
-                        <asp:Label runat="server" Text='<%#Eval("Name")%>'>'></asp:Label>
+                        <asp:HyperLink NavigateUrl= '<%#Eval("Id", "EditAndDeleteCompanyUI.aspx?id={0}")%>' runat="server" Text='<%#Eval("Name")%>'></asp:HyperLink>
+                       <%-- <asp:Label runat="server" Text='<%#Eval("Name")%>'>'></asp:Label>--%>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

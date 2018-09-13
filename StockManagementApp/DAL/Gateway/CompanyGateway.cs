@@ -66,5 +66,60 @@ namespace StockManagementApp.DAL.Gateway
 
             return companies;
         }
+
+        public Company Get(int id)
+        {
+            Company company = new Company();
+
+            Query = "select * from Company where Id = '" + id + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+
+            while (Reader.Read())
+            {
+                company.Id = Convert.ToInt32(Reader["Id"]);
+                company.Name = Reader["Name"].ToString();
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return company;
+        }
+
+        internal int Edit(Company company)
+        {
+
+            Query = "sp_EditCompany @name = '" + company.Name + "', @id = '" + company.Id + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            int rowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+
+            return rowAffected;
+        }
+
+        internal int Delete(int companyId)
+        {
+            Company company = new Company();
+
+            Query = "delete  from Company where Id = '" + companyId + "'";
+
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            int rowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+
+            return rowAffected;
+        }
+
     }
 }

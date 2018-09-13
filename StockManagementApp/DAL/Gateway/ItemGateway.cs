@@ -155,5 +155,39 @@ namespace StockManagementApp.DAL.Gateway
 
             return ItemInfoVMS;
         }
+
+        internal bool DoesCompanyHasDependency(int companyId)
+        {
+            Query = "SELECT * FROM Item WHERE CompanyId = '" + companyId + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+        internal bool DoesCategoryHasDependency(int categoryId)
+        {
+            Query = "SELECT * FROM Item WHERE CategoryId = '" + categoryId + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+
     }
 }

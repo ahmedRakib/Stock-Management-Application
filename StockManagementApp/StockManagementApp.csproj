@@ -282,6 +282,7 @@
     <Content Include="Scripts\locales\bootstrap-datepicker.zh-TW.min.js" />
     <Content Include="UI\CategoryUI.aspx" />
     <Content Include="UI\CompanyUI.aspx" />
+    <Content Include="UI\EditAndDeleteCategoryUI.aspx" />
     <Content Include="UI\IndexUI.aspx" />
     <Content Include="UI\ItemSetupUI.aspx" />
     <Content Include="UI\SearchAndViewItemUI.aspx" />
@@ -324,6 +325,13 @@
     </Compile>
     <Compile Include="UI\CompanyUI.aspx.designer.cs">
       <DependentUpon>CompanyUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditAndDeleteCategoryUI.aspx.cs">
+      <DependentUpon>EditAndDeleteCategoryUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\EditAndDeleteCategoryUI.aspx.designer.cs">
+      <DependentUpon>EditAndDeleteCategoryUI.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\IndexUI.aspx.cs">
       <DependentUpon>IndexUI.aspx</DependentUpon>

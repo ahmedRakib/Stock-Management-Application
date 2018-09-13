@@ -71,7 +71,7 @@
 
         </header>
         <!--/header-->
-
+        </div>
 
         <div class="story-container" style="height:400px; width: 1000px">
 

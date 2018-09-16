@@ -1,26 +1,24 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CompanyUI.aspx.cs" Inherits="StockManagementApp.UI.CompanyUI" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditAndDeleteItemUI.aspx.cs" Inherits="StockManagementApp.UI.EditAndDeleteItemUI" %>
 
 <!DOCTYPE html>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-
     <title></title>
     <link href="../css/Style.css" rel="stylesheet" />
     <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <%--<link href="../css/bootstrap.min.css" rel="stylesheet" />--%>
     <link href="../css/font-awesome.min.css" rel="stylesheet" />
     <link href="../css/animate.min.css" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
     <link href="../css/responsive.css" rel="stylesheet" />
-
     <style>
         label.error {
             color: red;
             font-weight: bold;
             font-style: italic;
         }
+
         .messageLabel {
             color: red;
             font-weight: bold;
@@ -29,6 +27,7 @@
     </style>
 
 </head>
+
 <body>
     <div class="homepage">
         <header id="header">
@@ -73,97 +72,103 @@
 
         </header>
         <!--/header-->
-        </div>
+    </div>
 
-        <div class="story-container" style="height:400px; width: 1000px" >
+    <div class="story-container" style="height: 400px; width: 1000px">
 
-            <div class="story-content2">
-                <h2 class="story-header">Company Setup</h2>
+        <div class="story-content2">
+            <h2 class="story-header">Edit Item UI</h2>
 
-                <form id="form2" runat="server">
-                    <div>
-                        <table>
+            <form id="form1" runat="server">
+                <div>
+                     <table>
+
                             <tr>
                                 <td>
-                                    <asp:Label ID="Label2" runat="server" Text="Name"></asp:Label>
+                                    <asp:Label ID="categoryLabel" runat="server" Text="Category"></asp:Label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="nameTextBox" runat="server"></asp:TextBox>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <asp:Button ID="saveButton" runat="server" Text="Save" OnClick="saveButton_Click" />
+                                    <asp:DropDownList ID="categoryDropDownList" runat="server"></asp:DropDownList>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>
-                                     <span id ="messageLabel" class="messageLabel" runat="server"></span>
-
+                                    <asp:Label ID="companyLabel" runat="server" Text="Company"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:DropDownList ID="companyDropDownList" runat="server"></asp:DropDownList>
                                 </td>
                             </tr>
-                        </table>
-                    </div>
 
-        <asp:GridView ID="companyGridView" runat="server" Width="584px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
-            <RowStyle HorizontalAlign="Center" />
-           <Columns>
-                <asp:TemplateField HeaderText="#SL">
-                    <ItemTemplate>
-                        <%#Container.DataItemIndex+1 %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="Label1" runat="server" Text="Item Name"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="itemNameTextBox" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
 
-            <Columns>
-                <asp:TemplateField HeaderText="Company Name">
-                    <ItemTemplate>
-                        <asp:HyperLink NavigateUrl= '<%#Eval("Id", "EditAndDeleteCompanyUI.aspx?id={0}")%>' runat="server" Text='<%#Eval("Name")%>'></asp:HyperLink>
-                       <%-- <asp:Label runat="server" Text='<%#Eval("Name")%>'>'></asp:Label>--%>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-            <FooterStyle BackColor="#99CCCC" ForeColor="#003399" />
-            <HeaderStyle BackColor="#003399" Font-Bold="True" ForeColor="#CCCCFF" />
-            <PagerStyle BackColor="#99CCCC" ForeColor="#003399" HorizontalAlign="Left" />
-            <RowStyle BackColor="White" ForeColor="#003399" />
-            <SelectedRowStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
-            <SortedAscendingCellStyle BackColor="#EDF6F6" />
-            <SortedAscendingHeaderStyle BackColor="#0D4AC4" />
-            <SortedDescendingCellStyle BackColor="#D6DFDF" />
-            <SortedDescendingHeaderStyle BackColor="#002876" />
-        </asp:GridView>
+                            <tr>
+                                <td>
+                                    <asp:Label ID="recorderLabel" runat="server" Text="Recorder Level"></asp:Label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="recorderLevelTextBox" runat="server"></asp:TextBox>
+                                </td>
+                            </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <asp:Button ID="editButton" runat="server" Text="Edit" OnClick="editButton_Click" />
+                            </td>
+                           
+                               
+                        </tr>
 
-                </form>
-            </div>
+                        <tr>
+                            <td>
+                                <span id="messageLabel" class="messageLabel" runat="server"></span>
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </form>
         </div>
-        <div>
-        <footer style="font-family: cursive;background-color: #004C99">Developed By @RAKIB </footer>
-        </div>
+    </div>
+    <div>
+        <footer style="font-family: cursive; background-color: #004C99">Developed By  @RAKIB </footer>
+    </div>
 
-        <script src="../Scripts/jquery-3.3.1.js"></script>
-        <script src="../Scripts/jquery.validate.js"></script>
-        <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
-       
-        <script>
-            $().ready(function () {
+    <script src="../Scripts/jquery-3.3.1.js"></script>
+    <script src="../Scripts/jquery.validate.js"></script>
+    <script src="../Scripts/jquery-ui-1.12.1.min.js"></script>
 
-                // validate signup form on keyup and submit
-                $("#form2").validate({
-                    rules: {
-                        nameTextBox: "required",
-                    },
-                    messages: {
-                        nameTextBox: "Please enter company  name",
-                    }
-                });
-            });
+   <script>
+       $().ready(function () {
+
+           // validate signup form on keyup and submit
+           $("#form2").validate({
+               rules: {
+                   itemNameTextBox: "required",
+                   recorderLevelTextBox: {
+                       required: true,
+                       number: true,
+                   },
+               },
+               messages: {
+                   itemNameTextBox: "Please enter Item  name",
+                   recorderLevelTextBox: {
+                       required: "Please enter a recorder level",
+                       number: "Please enter a number",
+                   },
+               }
+           });
+       });
         </script>
-
 </body>
 </html>
-
 
 

@@ -23,6 +23,20 @@ namespace StockManagementApp.DAL.Gateway
             return rowAffected;
         }
 
+        internal int Edit(Item item)
+        {
+
+            Query = "sp_EditItem @itemName = '" + item.Name + "', @id = '" + item.Id + "', @companyId = '" + item.CompanyId + "', @categoryId = '" + item.CategoryId + "', @recorderLevel = '" + item.RecorderLevel + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+            int rowAffected = Command.ExecuteNonQuery();
+            Connection.Close();
+
+            return rowAffected;
+        }
+
         public bool DoesItemNameOrRecorderLevelExists(string itemName, int recorderLevel)
         {
             Query = "SELECT * FROM Item WHERE Name = '" + itemName + "' or RecorderLevel = '"+recorderLevel+"'";
@@ -70,7 +84,7 @@ namespace StockManagementApp.DAL.Gateway
             return items;
         }
 
-        public Item Get(string itemName)
+        public Item GetByName(string itemName)
         {
             var item = new Item();
 
@@ -154,6 +168,67 @@ namespace StockManagementApp.DAL.Gateway
             Connection.Close();
 
             return ItemInfoVMS;
+        }
+
+        internal bool DoesCompanyHasDependency(int companyId)
+        {
+            Query = "SELECT * FROM Item WHERE CompanyId = '" + companyId + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+        internal bool DoesCategoryHasDependency(int categoryId)
+        {
+            Query = "SELECT * FROM Item WHERE CategoryId = '" + categoryId + "'";
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            bool hasRows = Reader.HasRows;
+
+            Reader.Close();
+            Connection.Close();
+
+            return hasRows;
+        }
+
+
+        public Item GetById(int id)
+        {
+            var item = new Item();
+
+            Query = @"Select * from Item Where Id = '" + id + "'";
+
+
+            Command = new SqlCommand(Query, Connection);
+
+            Connection.Open();
+
+            Reader = Command.ExecuteReader();
+            while (Reader.Read())
+            {
+                item.Id = Convert.ToInt32(Reader["Id"]);
+                item.Name = Reader["Name"].ToString();
+                item.CompanyId = Convert.ToInt32(Reader["CompanyId"]);
+                item.CategoryId = Convert.ToInt32(Reader["CategoryId"]);
+                item.RecorderLevel = Convert.ToInt32(Reader["RecorderLevel"]);
+            }
+
+            Reader.Close();
+            Connection.Close();
+
+            return item;
         }
     }
 }

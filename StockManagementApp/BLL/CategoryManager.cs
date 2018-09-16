@@ -10,7 +10,7 @@ namespace StockManagementApp.BLL
     public class CategoryManager
     {
         CategoryGateway categoryGateway = new CategoryGateway();
-
+        ItemGateway itemGateway = new ItemGateway();
         public string Save(DAL.Entity.Category category)
         {
             string message = "";
@@ -77,17 +77,23 @@ namespace StockManagementApp.BLL
         {
             string message = "";
 
-           
+            if (itemGateway.DoesCategoryHasDependency(categoryId))
+            {
+                message = "Can not be deleted as an item exist of that category";
+            }
+            else
+            {
                 int rowAffected = categoryGateway.Delete(categoryId);
 
                 if (rowAffected > 0)
                 {
-                    message = "Category Deleted Successfully";
+                    message = "Company Deleted Successfully";
                 }
                 else
                 {
-                    message = "Catgeory Could Not Be Deleted";
+                    message = "Company Could Not Be Deleted";
                 }
+            }
 
             return message;
         }

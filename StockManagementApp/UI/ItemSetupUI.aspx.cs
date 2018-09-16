@@ -35,6 +35,17 @@ namespace StockManagementApp.UI
                 companyDropDownList.Items.Insert(0, new ListItem("--Select--", "0"));
 
             }
+
+            GetAllItems();
+        }
+
+        public void GetAllItems()
+        {
+            var items = itemManager.GetAll();
+
+            itemGridView.DataSource = items;
+            itemGridView.DataBind();
+           
         }
 
         protected void saveButton_Click(object sender, EventArgs e)
@@ -53,6 +64,8 @@ namespace StockManagementApp.UI
             else
             {
                 messageLabel.InnerText = itemManager.Save(item);
+
+                GetAllItems();
             }
 
         }

@@ -283,6 +283,7 @@
     <Content Include="UI\CategoryUI.aspx" />
     <Content Include="UI\CompanyUI.aspx" />
     <Content Include="UI\EditAndDeleteCategoryUI.aspx" />
+    <Content Include="UI\EditAndDeleteItemUI.aspx" />
     <Content Include="UI\EditAndDeleteCompanyUI.aspx" />
     <Content Include="UI\IndexUI.aspx" />
     <Content Include="UI\ItemSetupUI.aspx" />
@@ -333,6 +334,13 @@
     </Compile>
     <Compile Include="UI\EditAndDeleteCategoryUI.aspx.designer.cs">
       <DependentUpon>EditAndDeleteCategoryUI.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditAndDeleteItemUI.aspx.cs">
+      <DependentUpon>EditAndDeleteItemUI.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\EditAndDeleteItemUI.aspx.designer.cs">
+      <DependentUpon>EditAndDeleteItemUI.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\EditAndDeleteCompanyUI.aspx.cs">
       <DependentUpon>EditAndDeleteCompanyUI.aspx</DependentUpon>

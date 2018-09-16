@@ -56,7 +56,7 @@ namespace StockManagementApp.UI
            
             messageLabel.InnerText = String.Empty;
             var itemName = itemDropDownList.SelectedItem.Text;
-            var item  = itemManager.Get(itemName);
+            var item  = itemManager.GetByName(itemName);
             var companyId = Convert.ToInt32(companyDropDownList.SelectedValue);
             var stocIn = stockInManager.Get(item.Name, companyId);
             quantityTextBox.Text = stocIn.Quantity.ToString();

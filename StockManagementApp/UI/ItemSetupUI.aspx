@@ -74,7 +74,7 @@
         <!--/header-->
         </div>
 
-        <div class="story-container" style="height: 400px; width: 1000px">
+        <div class="story-container" style="height: 600px; width: 1000px">
 
             <div class="story-content2">
                 <h2 class="story-header">Item Setup</h2>
@@ -136,7 +136,7 @@
                         </table>
                     </div>
 
-                    <asp:GridView ID="itemGridView" runat="server" Width="584px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4">
+                    <asp:GridView ID="itemGridView" runat="server" Width="584px" AutoGenerateColumns="False" BackColor="White" BorderColor="#3366CC" BorderStyle="None" BorderWidth="1px" CellPadding="4" Height="106px">
             <RowStyle HorizontalAlign="Center" />
            <Columns>
                 <asp:TemplateField HeaderText="#SL">
@@ -168,9 +168,9 @@
                 </form>
             </div>
         </div>
-        <div>
+       <%-- <div>
             <footer style="font-family: cursive; background-color: #004C99">Developed By @RAKIB </footer>
-        </div>
+        </div>--%>
 
         <script src="../Scripts/jquery-3.3.1.js"></script>
         <script src="../Scripts/jquery.validate.js"></script>

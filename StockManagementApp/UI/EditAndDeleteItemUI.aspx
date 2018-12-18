@@ -138,9 +138,10 @@
             </form>
         </div>
     </div>
-    <div>
+   
+   <%-- <div>
         <footer style="font-family: cursive; background-color: #004C99">Developed By  @RAKIB </footer>
-    </div>
+    </div>--%>
 
     <script src="../Scripts/jquery-3.3.1.js"></script>
     <script src="../Scripts/jquery.validate.js"></script>
